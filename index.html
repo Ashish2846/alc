@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcoholic Drinks Showcase</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            scroll-behavior: smooth; /* Enables smooth scroll */
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        /* 1. Sticky Navigation Bar */
+        nav {
+            background-color: #333;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 20px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #444;
+            border-radius: 5px;
+        }
+
+        /* 2. Drink Listing Section */
+        .drink-list ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .drink-list li {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        /* 3. Cocktail Recipe Card */
+        .recipe-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        .recipe-card ul {
+            padding-left: 20px;
+        }
+
+        /* 4. Whiskey Showcase with Image */
+        .showcase {
+            text-align: center;
+        }
+
+        .showcase img {
+            width: 50%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .showcase button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .showcase button:hover {
+            background-color: #555;
+        }
+
+        /* 5. Beer Product Grid */
+        .beer-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .beer-item {
+            text-align: center;
+        }
+
+        .beer-item img {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+        }
+
+        .beer-item p {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        /* 6. Wine Product Card */
+        .product-card {
+            background-color: #fff;
+            width: 250px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .product-card button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #b11b1b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-card button:hover {
+            background-color: #990d0d;
+        }
+
+        /* 7. Cocktail List */
+        .cocktail-list ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .cocktail-list li {
+            font-size: 18px;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cocktail-list li:hover {
+            background-color: #ddd;
+        }
+
+        /* 8. Alcohol Categories */
+        .category-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .category {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            text-align: center;
+        }
+
+        /* 9. Gin vs Vodka Table */
+        .comparison-table {
+            width: 80%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        /* 10. Alcohol Search Bar */
+        .search-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        /* 11. Alcoholic Beverage Testimonials */
+        .testimonials {
+            text-align: center;
+        }
+
+        .review {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 1. Sticky Navigation Bar -->
+    <nav>
+        <a href="#drink-list">Drink List</a>
+        <a href="#cocktail-recipe">Cocktail Recipe</a>
+        <a href="#whiskey-showcase">Whiskey Showcase</a>
+        <a href="#beer-grid">Beer Products</a>
+        <a href="#wine-product">Wine Product</a>
+        <a href="#cocktail-list">Cocktail List</a>
+        <a href="#categories">Categories</a>
+        <a href="#comparison">Gin vs Vodka</a>
+        <a href="#search-bar">Search</a>
+        <a href="#testimonials">Testimonials</a>
+    </nav>
+
+    <!-- 2. Alcohol Drink Listing -->
+    <div class="section" id="drink-list">
+        <h1>Popular Alcoholic Drinks</h1>
+        <ul>
+            <li>Vodka</li>
+            <li>Whiskey</li>
+            <li>Beer</li>
+            <li>Tequila</li>
+            <li>Rum</li>
+        </ul>
+    </div>
+
+    <!-- 3. Cocktail Recipe Card -->
+    <div class="section" id="cocktail-recipe">
+        <h2>Martini</h2>
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>2 oz Gin</li>
+            <li>1 oz Dry Vermouth</li>
+            <li>Lemon twist</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <p>Stir all ingredients with ice and strain into a chilled martini glass. Garnish with a lemon twist.</p>
+    </div>
+
+    <!-- 4. Whiskey Showcase -->
+    <div class="section" id="whiskey-showcase">
+        <h2>Premium Whiskey</h2>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqmMfOTCZLl-BD_SjlQ9uSsOKp0hVr6JY1ww&s" alt="Whiskey Bottle">
+        <p>This is a fine whiskey aged for 12 years. Smooth and rich in flavor.</p>
+        <button>Buy Now</button>
+    </div>
+
+    <!-- 5. Beer Product Grid -->
+    <div class="section" id="beer-grid">
+        <h2>Our Best Beer Products</h2>
+        <div class="beer-grid">
+            <div class="beer-item">
+                <img src="data:image/jpeg;base64,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" alt="Beer 1">
+                <p>Beer 1</p>
+            </div>
+            <div class="beer-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5XZj2suQFWkOvMEhBCn7l9Sq-ijYqSi9UZQ&s" alt="Beer 2">
+                <p>Beer 2</p>
+            </div>
+            <div class="beer-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA3XWfoQcyIkwHz9FlVHRbDepX27ZxXbeS-A&s" alt="Beer 3">
+                <p>Beer 3</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Wine Product Card -->
+    <div class="section" id="wine-product">
+        <h2>Red Wine</h2>
+        <div class="product-card">
+            <img src="data:image/jpeg;base64,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" alt="Red Wine">
+            <p>Delicious and smooth red wine. Perfect for any occasion.</p>
+            <button>Learn More</button>
+        </div>
+    </div>
+
+    <!-- 7. Cocktail List -->
+    <div class="section" id="cocktail-list">
+        <h2>Cocktail Recipes</h2>
+        <ul>
+            <li>Martini</li>
+            <li>Margarita</li>
+            <li>Mojito</li>
+            <li>Old Fashioned</li>
+        </ul>
+    </div>
+
+    <!-- 8. Alcohol Categories -->
+    <div class="section" id="categories">
+        <h2>Explore Alcohol Categories</h2>
+        <div class="category-container">
+            <div class="category">
+                <h3>Beer</h3>
+                <p>Various types of beer available.</p>
+            </div>
+            <div class="category">
+                <h3>Wine</h3>
+                <p>Red, white, and sparkling wines.</p>
+            </div>
+            <div class="category">
+                <h3>Spirits</h3>
+                <p>Whiskey, Vodka, Rum, and more.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. Gin vs Vodka Comparison Table -->
+    <div class="section" id="comparison">
+        <h2>Gin vs Vodka Comparison</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Gin</th>
+                    <th>Vodka</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Base Ingredient</td>
+                    <td>Juniper Berries</td>
+                    <td>Grains/Potatoes</td>
+                </tr>
+                <tr>
+                    <td>Flavor Profile</td>
+                    <td>Herbal, Spicy</td>
+                    <td>Neutral</td>
+                </tr>
+                <tr>
+                    <td>Popular Cocktails</td>
+                    <td>Gin Tonic, Martini</td>
+                    <td>Bloody Mary, Moscow Mule</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 10. Alcohol Search Bar -->
+    <div class="section" id="search-bar">
+        <h2>Search Alcoholic Drinks</h2>
+        <input type="text" placeholder="Search Alcoholic Drinks...">
+        <button>Search</button>
+    </div>
+
+    <!-- 11. Customer Testimonials -->
+    <div class="section" id="testimonials">
+        <h2>Customer Reviews</h2>
+        <div class="review">
+            <p>"The best whiskey I've ever had!" - John D.</p>
+        </div>
+        <div class="review">
+            <p>"Amazing margarita recipe. A true hit!" - Sarah M.</p>
+        </div>
+        <div class="review">
+            <p>"This gin is so smooth, I highly recommend it." - Mike T.</p>
+        </div>
+    </div>
+
+</body>
+</html>
